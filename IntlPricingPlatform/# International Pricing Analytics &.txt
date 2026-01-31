@@ -1,0 +1,196 @@
+# International Pricing Analytics & Automation Platform  
+### A Portfolio Project Inspired by Delta Air Lines’ International Pricing Solutions (IPS)
+
+## ✈️ Project Overview
+This project simulates the core functions of a modern airline **pricing automation and revenue analytics system**, modeled after Delta Air Lines' International Pricing Solutions (IPS) team.  
+It delivers:
+- SQL-based automation  
+- Dynamic Tableau pricing dashboards  
+- Daily pricing ETL pipelines  
+- Predictive models (elasticity, anomaly detection)  
+- A fully functional pricing dataset + stored procedures  
+- A workflow that analysts would use in a real Revenue Management (RM) environment  
+
+This project showcases my ability to design tools that support **international pricing analysts** by improving **speed, accuracy, complexity, and scale** of pricing actions.
+
+---
+
+## 🚨 Problem Statement  
+Airline pricing analysts must evaluate thousands of international markets, competitor fares, seasonal trends, and performance indicators every day.  
+Manual processes are slow and error-prone, leading to:
+- Delayed pricing decisions  
+- Missed revenue opportunities  
+- Lack of visibility into market performance  
+- Reactive instead of proactive pricing  
+
+This project solves the problem by building an **automated pricing analytics platform** that:
+1. Loads daily fare data into a SQL database  
+2. Computes pricing KPIs & triggers smart automation  
+3. Generates rule-based or model-driven fare recommendations  
+4. Presents insights through **Tableau dashboards**  
+5. Integrates predictive analytics into the pricing workflow  
+
+---
+
+## 📄 Data Sources
+
+### 1. Airline Fare & Market Data  
+**Kaggle: Airline Market Fare Prediction Dataset**  
+Used for fares, origin-destination markets, demand.  
+https://www.kaggle.com/datasets/zmamoon/airline-market-fare-prediction  
+License: *CC0: Public Domain*
+
+### 2. Flight Routes & Airport Metadata  
+**OpenFlights Airports + Routes**  
+Used for region classification (TATL, TPAC, LATAM-like groups).  
+https://openflights.org/data.html  
+License: *ODbL (Open Database License)*
+
+### 3. Optional Competitor Fare Data  
+If you want to add another layer, you can integrate:  
+**Priceline flight pricing dataset** (Kaggle)  
+https://www.kaggle.com/datasets/dilwong/priceline-flight-data  
+License: *CC0*
+
+---
+
+## 🏗️ System Architecture
+
+
+              ┌────────────────────────┐
+              │   Raw Data Sources      │
+              │ (Kaggle, OpenFlights)   │
+              └────────────┬───────────┘
+                           │
+                 (Python ETL Scripts)
+                           │
+             ┌────────────▼────────────┐
+             │      SQL Database        │
+             │ airports / markets       │
+             │ fares / kpis             │
+             │ pricing_recommendations  │
+             └────────────┬────────────┘
+                           │
+                   (Stored Procedures)
+                           │
+             ┌────────────▼────────────┐
+             │ Predictive Models        │
+             │ (Elasticity, Anomaly)    │
+             └────────────┬────────────┘
+                           │
+             ┌────────────▼────────────┐
+             │  Tableau Dashboards      │
+             │ Pricing, RM KPIs, RM Ops │
+             └──────────────────────────┘
+
+
+
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|------|------------|
+| Database | SQL Server or PostgreSQL |
+| ETL | Python (pandas, SQLAlchemy, pyodbc) |
+| Automation | Stored procedures, scheduled Python |
+| Visualization | Tableau |
+| ML Models | Scikit-learn |
+| Repo | GitHub, Markdown, diagrams |
+
+---
+
+## 🚀 How to Run the Project
+international-pricing-analytics-platform/
+│
+├── etl/
+│   ├── load_airline_market_fare.py
+│   ├── transform_market_pricing.py
+│   ├── README.md
+│
+├── sql/
+│   ├── schema/
+│   │     ├── create_tables.sql
+│   │     ├── constraints.sql
+│   ├── stored_procedures/
+│   │     ├── usp_GetMarketPricingSummary.sql
+│   │     ├── usp_LoadDimensions.sql
+│   ├── views/
+│   │     ├── vw_MarketPricingSummary.sql
+│   │     ├── vw_RoutePoints.sql
+│
+├── tableau/
+│   ├── dashboard_screenshots/
+│       ├── kpi_cards.png
+│       ├── route_heatmap.png
+│       ├── route_map.png
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│
+├── docs/
+│   ├── architecture_diagram.png
+│   ├── ERD.png
+│   ├── ETL_flow.png
+│   ├── Dashboard_Full.png
+│   ├── Portfolio_Report.docx
+│
+├── README.md
+│
+└── .gitignore
+
+### **1. Clone the project**
+
+git clone https://github.com/yourusername/international-pricing-platform.git
+cd international-pricing-platform
+
+
+### **2. Set up the database**
+- Create a new SQL Server or PostgreSQL instance  
+- Run all schema scripts in `/sql/schema/`
+
+### **3. Load raw datasets**
+Place them under:
+data/raw/
+fares.csv
+airports.csv
+routes.csv
+
+
+### **4. Run the ETL pipeline**
+python etl/run_all_etl.py
+
+
+This will:
+- Clean fares
+- Load airports & markets
+- Insert data into SQL
+- Trigger stored procedures
+
+### **5. Open Tableau dashboards**
+Import dashboards from:
+/tableau/
+Intl_Pricing_Overview.twb
+Market_Performance.twb
+Revenue_Impact.twb
+
+
+### **6. (Optional) Train forecasting & elasticity models**
+python analytics/train_elasticity_model.py
+
+
+---
+
+## 📊 Tableau Dashboard Screenshots
+*(Add screenshot images here once dashboards are created)*
+
+Place them in:
+/images/dashboard_1.png
+/images/dashboard_2.png
+/images/dashboard_3.png
+
+
+
+---
